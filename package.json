@@ -1,5 +1,5 @@
 {
-  "name": "cube_analysis",
+  "name": "cube_flow",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -11,14 +11,16 @@
   "dependencies": {
     "@tweenjs/tween.js": "^25.0.0",
     "gan-web-bluetooth": "^3.0.2",
-    "next": "15.3.5",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "next": "15.4.2",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
     "three": "^0.178.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
     "eslint": "^9",
-    "eslint-config-next": "15.3.5"
+    "eslint-config-next": "15.4.2",
+    "tailwindcss": "^4"
   }
 }

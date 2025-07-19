@@ -24,18 +24,37 @@ export default function RubiksCubeScene({ moves }) {
 
 		const scene = new THREE.Scene();
 		scene.background = new THREE.Color(0x111111);
+		
+		const width = mountNode.clientWidth;
+		const height = mountNode.clientHeight;
 
 		const camera = new THREE.PerspectiveCamera(
 			50,
-			window.innerWidth / window.innerHeight,
+			width / height,
 			0.1,
-			1000
+			2000
 		);
 		camera.position.set(4, 5, 8);
 
 		const renderer = new THREE.WebGLRenderer({ antialias: true });
-		renderer.setSize(window.innerWidth, window.innerHeight);
 		renderer.setPixelRatio(window.devicePixelRatio);
+		
+		const resize = () => {
+			const width = mountNode.clientWidth;
+			const height = mountNode.clientHeight;
+			
+			renderer.setSize(width, height);
+			camera.aspect = width / height;
+			camera.updateProjectionMatrix();
+		};
+		
+		resize();
+		window.addEventListener('resize', resize);
+		
+		// Remove all child nodes before adding a new one. Prevents duplicates
+		if (mountNode.hasChildNodes()) {
+			mountNode.innerHTML = '';
+		}
 		
 		mountNode.appendChild(renderer.domElement);
 
@@ -173,5 +192,5 @@ export default function RubiksCubeScene({ moves }) {
 		addMovesToQueue(moves);
 	}, [moves, scene]);
 
-	return <div ref={mountRef} />;
+	return <div className="w-full h-[90vh]" ref={mountRef} />;
 }
