@@ -5,7 +5,7 @@ export function parseMoveString(input) {
   // split on any whitespace, upper‑case for consistency
   const tokens = input.trim().toUpperCase().split(/\s+/);
   const validFaces = Object.keys(MOVE_DEFINITIONS);
-  console.log(tokens);
+  
   for (const token of tokens) {
     if (!token) continue;
 
