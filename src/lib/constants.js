@@ -1,15 +1,13 @@
-// src/lib/constants.js
-
 export const CUBIE_SIZE = 1;
 export const ANIMATION_SPEED = 50; // milliseconds per quarter‑turn
 
 export const FACE_COLORS = {
   U: 0xffffff, // White
   D: 0xffff00, // Yellow
-  L: 0xff0000, // Red
-  R: 0xffa500, // Orange
+  L: 0xffa500, // Orange
+  R: 0xff0000, // Red
   F: 0x00ff00, // Green
-  B: 0x0000ff  // Blue
+  B: 0x0437F2 // Blue
 };
 
 const PI_HALF = Math.PI / 2;

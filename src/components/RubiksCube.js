@@ -147,7 +147,7 @@ export default function RubiksCubeScene({ moves }) {
 				pivot.updateMatrixWorld();
 				cubiesToRotate.forEach(c => cubeGroup.attach(c));
 				pivot.rotation[axis] = 0;
-				setIsAnimating(false);
+				setIsAnimating(_ => false);
 			})
 			.start();
 	}, [cubeGroup, getCubiesForMove, pivot, tweenGroup]);
@@ -158,18 +158,17 @@ export default function RubiksCubeScene({ moves }) {
 			
 			return;
 		}
-
-		setIsAnimating(true);
-
-		let nextMove = animationQueue[0];
 		
 		setAnimationQueue(prev => {
 			const [move, ...rest] = prev;
 			
+			console.log("Anim: ", move.face, move.direction); 
+			
+			setIsAnimating(_ => true);
+			animateMove(move);
+			
 			return rest;
 		});
-
-		animateMove(nextMove);
 	}, [animateMove, animationQueue]);
 	
 	function addMovesToQueue(moves) {
@@ -192,5 +191,5 @@ export default function RubiksCubeScene({ moves }) {
 		addMovesToQueue(moves);
 	}, [moves, scene]);
 
-	return <div className="w-full h-[90vh]" ref={mountRef} />;
+	return <div className="w-full h-[100vh]" ref={mountRef} />;
 }
