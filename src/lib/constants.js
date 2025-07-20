@@ -1,7 +1,7 @@
 // src/lib/constants.js
 
 export const CUBIE_SIZE = 1;
-export const ANIMATION_SPEED = 250; // milliseconds per quarter‑turn
+export const ANIMATION_SPEED = 50; // milliseconds per quarter‑turn
 
 export const FACE_COLORS = {
   U: 0xffffff, // White

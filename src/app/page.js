@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import dynamic from 'next/dynamic';
 import { connectGanCube } from 'gan-web-bluetooth';
+import { parseMoveString } from '../lib/move_parser.js';
 
 // dynamically import to avoid SSR issues
 const RubiksCube = dynamic(() => import('../components/RubiksCube'), { ssr: false });
@@ -54,7 +55,10 @@ export default function Home() {
 
   function handleCubeEvent(event) {
     if (event.type == "MOVE") {
-      console.log("Move: " + event.move);
+      const parsedMove = parseMoveString(event.move);
+      
+      // This gets added to the queue instead of replacing the value already in the queue
+      setMoves(prevMoves => parsedMove);
     }
   }
 
